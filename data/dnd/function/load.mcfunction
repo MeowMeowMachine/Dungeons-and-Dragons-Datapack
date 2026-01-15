@@ -15,6 +15,7 @@ team add halforc
 team add dragonborn
 team add undecided
 
+title @a times 1 2 1
 
 scoreboard objectives add firstjoined dummy
 scoreboard objectives add changeracedwarf trigger
@@ -26,3 +27,11 @@ scoreboard objectives add changeracedragonborn trigger
 scoreboard objectives add firstjoinedclear dummy
 
 scoreboard objectives add sneak minecraft.custom:minecraft.sneak_time
+scoreboard objectives add raycast dummy
+scoreboard objectives add ray_steps dummy
+scoreboard objectives add ray_success dummy
+scoreboard objectives add cooldown dummy
+scoreboard objectives add toggleabilitycd trigger
+scoreboard objectives add toggleability trigger
+scoreboard objectives add snek dummy
+scoreboard objectives add ileftclicked dummy

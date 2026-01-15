@@ -9,3 +9,4 @@ attribute @s minecraft:entity_interaction_range base set 2.5
 attribute @s minecraft:block_interaction_range base set 3.0
 
 attribute @s minecraft:scale base set 0.6
+attribute @s sneaking_speed base set 0.9
