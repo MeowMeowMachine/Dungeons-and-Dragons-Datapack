@@ -1,0 +1,3 @@
+
+
+scoreboard players set @s sneak 0
