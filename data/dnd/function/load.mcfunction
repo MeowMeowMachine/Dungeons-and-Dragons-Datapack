@@ -82,3 +82,6 @@ scoreboard objectives add enraged_status dummy
 
 scoreboard objectives add dynamicbossbardistributor dummy
 scoreboard objectives add ihavabarwtf dummy
+scoreboard objectives add automate_raceupdates dummy
+
+execute unless score master automate_raceupdates matches -1.. run scoreboard players set master automate_raceupdates 1

@@ -94,3 +94,13 @@ execute as @a unless score @s toggleability matches -1.. run scoreboard players 
 
 
 execute store result storage dnd:dynamicbossbardistributor distributor.id int 1 run scoreboard players get distributor dynamicbossbardistributor
+
+
+
+execute if score master automate_raceupdates matches 1 as @a[team=demon] run function dnd:classes/demon/applyclassattributes
+execute if score master automate_raceupdates matches 1 as @a[team=dragonborn] run function dnd:classes/dragonborn/applyclassattributes
+execute if score master automate_raceupdates matches 1 as @a[team=dwarf] run function dnd:classes/dwarf/applyclassattributes
+execute if score master automate_raceupdates matches 1 as @a[team=elf] run function dnd:classes/elf/applyclassattributes
+execute if score master automate_raceupdates matches 1 as @a[team=halforc] run function dnd:classes/halforc/applyclassattributes
+execute if score master automate_raceupdates matches 1 as @a[team=halfling] run function dnd:classes/halfling/applyclassattributes
+execute if score master automate_raceupdates matches 1 as @a[team=dragonborn] run function dnd:classes/dragonborn/applyclassattributes
