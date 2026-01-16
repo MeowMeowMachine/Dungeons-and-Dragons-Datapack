@@ -26,15 +26,36 @@ execute as @a[team=elf] unless entity @s[predicate=dnd:is_sneaking] run scoreboa
 scoreboard players add tick cooldown 1
 execute if score tick cooldown matches 20.. as @a if score @s cooldown matches 1.. run scoreboard players remove @s cooldown 1
 execute if score tick cooldown matches 20.. as @a if score @s enraged_status matches 1.. run scoreboard players remove @s enraged_status 1
-execute if score tick cooldown matches 20.. run scoreboard players set tick cooldown 0
+
 execute as @a unless score @s cooldown matches -1.. run scoreboard players set @s cooldown 0
 execute as @a unless score @s enraged_status matches -1.. run scoreboard players set @s enraged_status 0
 
+execute if score tick cooldown matches 20.. if score serverboom start matches 1.. run scoreboard players remove servertime start 1
+execute if score servertime start matches 0 run scoreboard players set serverboom start 0
+execute if score servertime start matches 0 run function dnd:debug/stop
+
+execute if score tick cooldown matches 1 if score servertime start matches 60 run tellraw @a [{"text":"Server stopping in 60 seconds...","color":"red"}]
+execute if score tick cooldown matches 1 if score servertime start matches 30 run tellraw @a [{"text":"Server stopping in 30 seconds...","color":"red"}]
+execute if score tick cooldown matches 1 if score servertime start matches 10 run tellraw @a [{"text":"Server stopping in 10 seconds...","color":"red"}]
+execute if score tick cooldown matches 1 if score servertime start matches 5 run tellraw @a [{"text":"Server stopping in 5 seconds...","color":"red"}]
+execute if score tick cooldown matches 1 if score servertime start matches 3 run tellraw @a [{"text":"Server stopping in 3 seconds...","color":"red"}]
+execute if score tick cooldown matches 1 if score servertime start matches 2 run tellraw @a [{"text":"Server stopping in 2 seconds...","color":"red"}]
+execute if score tick cooldown matches 1 if score servertime start matches 1 run tellraw @a [{"text":"Server stopping in 1 second...","color":"red"}]
 ### season 1 specific
 execute as @a[nbt={SelectedItem:{id:"minecraft:mace"}}] run tellraw @s [{"text":"The Mace has been removed from Season 1 for balancing reasons.","color":"red"}]
 execute as @a[nbt={SelectedItem:{id:"minecraft:mace"}}] run clear @s mace
 
 execute as @a if dimension the_nether in minecraft:overworld run tp @s -1380 84 -319
+
+
+##death
+execute as @a[scores={victim=1..}] run function dnd:customdeathmsg
+scoreboard players set @a victim 0
+scoreboard players set @a killer 0
+
+
+
+execute if score tick cooldown matches 20.. run scoreboard players set tick cooldown 0
 
 # start
 execute as @a[scores={start=1}] as @s run function dnd:debug/start
