@@ -88,4 +88,5 @@ execute unless score master automate_raceupdates matches -1.. run scoreboard pla
 execute as @a unless score @s toggleabilitycd matches -1.. run scoreboard players set @s toggleabilitycd 1
 
 scoreboard objectives add killer playerKillCount
+scoreboard objectives add deathmsgid dummy
 scoreboard objectives add victim deathCount
