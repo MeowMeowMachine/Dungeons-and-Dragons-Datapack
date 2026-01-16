@@ -47,11 +47,12 @@ execute as @a[team=!undecided] run scoreboard players reset @s changeracehalflin
 execute as @a[team=!undecided] run scoreboard players reset @s changeracedragonborn 
 
 ##dragbornability
-execute as @e[type=interaction,tag=enrage] at @s unless entity @e[type=player,distance=..1.5,team=dragonborn,predicate=dnd:is_sneaking,scores={toggleability=0}] run kill @s
-execute as @a[team=dragonborn,predicate=dnd:is_sneaking,scores={toggleability=0,cooldown=0}] at @s run function dnd:classes/dragonborn/enragetrigger
+execute as @e[type=interaction,tag=enrage] at @s unless entity @e[type=player,distance=..1.5,team=dragonborn,predicate=dnd:is_sneaking,predicate=dnd:is_sword,scores={toggleability=0}] run kill @s
+execute as @a[team=dragonborn,predicate=dnd:is_sneaking,scores={toggleability=0,cooldown=0},predicate=dnd:is_sword] at @s run function dnd:classes/dragonborn/enragetrigger
 execute as @a[team=dragonborn] at @s if score @s enraged_status matches 1.. run execute as @s run function dnd:lib/createbossbar with storage dnd:dynamicbossbardistributor distributor
-
-
+execute as @a[team=dragonborn,scores={enraged_status=120}] at @s run playsound minecraft:item.firecharge.use master @a ~ ~ ~ 1 0.8
+execute as @a[team=dragonborn,scores={enraged_status=120}] at @s run playsound entity.blaze.ambient master @a ~ ~ ~ 1 0.8
+execute as @a[team=dragonborn,scores={enraged_status=1}] at @s run playsound block.fire.extinguish master @a ~ ~ ~ 1 1.2
 # execute as @a store result storage 
 
 ## Dwarf
