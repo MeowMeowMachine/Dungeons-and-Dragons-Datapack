@@ -15,6 +15,25 @@ team add halforc
 team add dragonborn
 team add undecided
 
+team modify dwarf color dark_red
+team modify dwarf prefix [{"text":"[","color":"dark_red"},{"text":"D","color":"#b10808"},{"text":"w","color":"#a51010"},{"text":"a","color":"#991919"},{"text":"r","color":"#8c2121"},{"text":"f","color":"#802929"},{"text":"] ","color":"#743232"}]
+
+team modify elf color green
+team modify elf prefix [{"text":"[E","color":"#60fe3f"},{"text":"l","color":"#4ffe75"},{"text":"f] ","color":"#3ffeac"}]
+
+team modify dragonborn color gold
+team modify dragonborn prefix [{"text":"[","color":"gold"},{"text":"D","color":"#cf9833"},{"text":"r","color":"#c68e33"},{"text":"a","color":"#bd8433"},{"text":"g","color":"#b47933"},{"text":"o","color":"#ab6f33"},{"text":"n","color":"#a16532"},{"text":"b","color":"#985b32"},{"text":"o","color":"#8f5032"},{"text":"r","color":"#864632"},{"text":"n","color":"#7d3c32"},{"text":"] ","color":"#743232"}]
+
+team modify demon color red 
+team modify demon prefix [{"text":"[","color":"#db2525"},{"text":"D","color":"#c32020"},{"text":"e","color":"#ab1b1b"},{"text":"m","color":"#931717"},{"text":"o","color":"#7b1212"},{"text":"n","color":"#630d0d"},{"text":"] ","color":"#4b0909"}]
+
+team modify halforc color dark_green
+team modify halforc prefix [{"text":"[H","color":"#00681f"},{"text":"a","color":"#15641b"},{"text":"l","color":"#2b6017"},{"text":"f","color":"#405c13"},{"text":"o","color":"#56580f"},{"text":"r","color":"#6b540b"},{"text":"c] ","color":"#815007"}]
+
+team modify halfling color light_purple
+team modify halfling prefix [{"text":"[H","color":"#dada5e"},{"text":"a","color":"#d7cc6c"},{"text":"l","color":"#d4be7b"},{"text":"f","color":"#d1b08a"},{"text":"l","color":"#cea399"},{"text":"i","color":"#cb95a8"},{"text":"n","color":"#c887b7"},{"text":"g] ","color":"#c67ac6"}]
+
+
 title @a times 1 2 1
 
 scoreboard objectives add firstjoined dummy
@@ -35,3 +54,21 @@ scoreboard objectives add toggleabilitycd trigger
 scoreboard objectives add toggleability trigger
 scoreboard objectives add snek dummy
 scoreboard objectives add ileftclicked dummy
+
+scoreboard objectives add height dummy
+
+scoreboard objectives add teamsum_dwarf dummy
+scoreboard objectives add teamsum_elf dummy
+scoreboard objectives add teamsum_demon dummy
+scoreboard objectives add teamsum_halforc dummy
+scoreboard objectives add teamsum_halfling dummy
+scoreboard objectives add teamsum_dragonborn dummy
+
+scoreboard objectives add master_maxclassuser dummy
+execute unless score master master_maxclassuser matches -1.. run scoreboard players set master master_maxclassuser 3 
+execute unless score master teamsum_demon matches -1.. run scoreboard players set master teamsum_demon 0
+execute unless score master teamsum_elf matches -1.. run scoreboard players set master teamsum_elf 0
+execute unless score master teamsum_dwarf matches -1.. run scoreboard players set master teamsum_dwarf 0
+execute unless score master teamsum_halforc matches -1.. run scoreboard players set master teamsum_halforc 0
+execute unless score master teamsum_halfling matches -1.. run scoreboard players set master teamsum_halfling 0
+execute unless score master teamsum_dragonborn matches -1.. run scoreboard players set master teamsum_dragonborn 0

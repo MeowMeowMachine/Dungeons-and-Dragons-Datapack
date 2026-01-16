@@ -10,6 +10,7 @@ attribute @s minecraft:follow_range base set 16
 attribute @s max_absorption base set 0
 attribute @s minecraft:attack_speed base set 4
 attribute @s sneaking_speed base set 0.3
+attribute @s jump_strength base set 0.419
 
 attribute @s block_interaction_range base set 5
 attribute @s step_height base set 0.6

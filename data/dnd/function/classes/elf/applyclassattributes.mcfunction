@@ -8,4 +8,5 @@ attribute @s minecraft:attack_speed base set 5
 attribute @s minecraft:entity_interaction_range base set 3.5
 attribute @s minecraft:block_interaction_range base set 4.0
 
-attribute @s minecraft:scale base set 1.11
+execute as @s store result storage dnd:temp_height scale.height float 0.01 run random value 95..111
+function dnd:lib/changeheight with storage dnd:temp_height scale

@@ -30,6 +30,18 @@ execute as @a unless score @s cooldown matches -1.. run scoreboard players set @
 
 
 
+execute as @a[team=!undecided] run scoreboard players reset @s changeracedwarf 
+execute as @a[team=!undecided] run scoreboard players reset @s changeraceelf 
+execute as @a[team=!undecided] run scoreboard players reset @s changeracedemon 
+execute as @a[team=!undecided] run scoreboard players reset @s changeracehalforc 
+execute as @a[team=!undecided] run scoreboard players reset @s changeracehalfling 
+execute as @a[team=!undecided] run scoreboard players reset @s changeracedragonborn 
+
+
+
+## Dwarf
+execute as @a[team=dwarf,scores={toggleability=1}] run function dnd:classes/dwarf/effect
+
 
 
 execute as @a if score @s toggleability matches 1 run kill @e[type=interaction,tag=elditrich_blast,distance=2]
