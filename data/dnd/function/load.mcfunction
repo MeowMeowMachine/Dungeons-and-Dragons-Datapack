@@ -77,3 +77,8 @@ execute unless score master teamsum_halfling matches -1.. run scoreboard players
 execute unless score master teamsum_dragonborn matches -1.. run scoreboard players set master teamsum_dragonborn 0
 execute unless score master childrensafety matches -1.. run scoreboard players set master childrensafety 0
 scoreboard objectives add childrensafety trigger
+
+scoreboard objectives add enraged_status dummy
+
+scoreboard objectives add dynamicbossbardistributor dummy
+scoreboard objectives add ihavabarwtf dummy
