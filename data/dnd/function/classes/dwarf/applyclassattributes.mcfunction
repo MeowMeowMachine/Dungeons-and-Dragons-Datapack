@@ -15,5 +15,6 @@ attribute @s minecraft:block_interaction_range base set 6.0
 
 #basis 0.67 0.67-0.8
 
-execute as @s store result storage dnd:temp_height scale.height float 0.01 run random value 67..80
+execute unless score @s IALREADYHAVEMYHEIGHT matches 1 run execute as @s store result storage dnd:temp_height scale.height float 0.01 run random value 67..80
+scoreboard players set @s IALREADYHAVEMYHEIGHT 1
 function dnd:lib/changeheight with storage dnd:temp_height scale

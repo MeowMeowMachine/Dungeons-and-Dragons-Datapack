@@ -14,5 +14,6 @@ attribute @s block_interaction_range base set 5
 attribute @s step_height base set 0.6
 attribute @s entity_interaction_range base set 4
 
-execute as @s store result storage dnd:temp_height scale.height float 0.01 run random value 90..110
+execute unless score @s IALREADYHAVEMYHEIGHT matches 1 run execute as @s store result storage dnd:temp_height scale.height float 0.01 run random value 90..110
+scoreboard players set @s IALREADYHAVEMYHEIGHT 1
 function dnd:lib/changeheight with storage dnd:temp_height scale
