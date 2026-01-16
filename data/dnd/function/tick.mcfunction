@@ -27,7 +27,8 @@ execute if score tick cooldown matches 20.. run scoreboard players set tick cool
 execute as @a unless score @s cooldown matches -1.. run scoreboard players set @s cooldown 0
 
 
-
+# start
+execute as @a[scores={start=1}] as @s run function dnd:debug/start
 
 
 execute as @a[team=!undecided] run scoreboard players reset @s changeracedwarf 
@@ -51,6 +52,12 @@ execute as @a[team=dragonborn,scores={toggleability=0}] at @s run function dnd:c
 # execute as @a[team=elf] at @s run function dnd:classes/elf/passive
 execute as @a[team=elf,scores={toggleability=0}] at @s run function dnd:classes/elf/effect
 
+# safe
+execute if score master childrensafety matches 1 run function dnd:lib/childrensafety
+execute if score master childrensafety matches 1.. run scoreboard players set master childrensafety 0
+execute unless score master childrensafety matches 1 run function dnd:lib/childrenunsafety
+
+scoreboard players enable @a[gamemode=creative] childrensafety
 
 
 execute as @a if score @s toggleability matches 1 run kill @e[type=interaction,tag=elditrich_blast,distance=2]

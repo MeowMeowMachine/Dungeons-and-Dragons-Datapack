@@ -34,7 +34,9 @@ team modify halfling color light_purple
 team modify halfling prefix [{"text":"[H","color":"#dada5e"},{"text":"a","color":"#d7cc6c"},{"text":"l","color":"#d4be7b"},{"text":"f","color":"#d1b08a"},{"text":"l","color":"#cea399"},{"text":"i","color":"#cb95a8"},{"text":"n","color":"#c887b7"},{"text":"g] ","color":"#c67ac6"}]
 
 
-title @a times 1 2 1
+scoreboard objectives add start trigger
+
+title @a times 0.2s 1s 0.4s
 
 scoreboard objectives add firstjoined dummy
 scoreboard objectives add changeracedwarf trigger
@@ -73,3 +75,5 @@ execute unless score master teamsum_dwarf matches -1.. run scoreboard players se
 execute unless score master teamsum_halforc matches -1.. run scoreboard players set master teamsum_halforc 0
 execute unless score master teamsum_halfling matches -1.. run scoreboard players set master teamsum_halfling 0
 execute unless score master teamsum_dragonborn matches -1.. run scoreboard players set master teamsum_dragonborn 0
+execute unless score master childrensafety matches -1.. run scoreboard players set master childrensafety 0
+scoreboard objectives add childrensafety trigger

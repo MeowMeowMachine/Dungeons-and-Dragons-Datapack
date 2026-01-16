@@ -44,7 +44,7 @@ execute as @s if score @s changeracedragonborn matches 1 unless score master tea
 
 execute as @s if score @s changeracedragonborn matches 1 if score master teamsum_dragonborn < master master_maxclassuser run team join dragonborn @s
 execute as @s if score @s changeracedragonborn matches 1 if score master teamsum_dragonborn < master master_maxclassuser run function dnd:lib/iamnowclass
-
+execute as @s[team=dragonborn] run scoreboard players add master teamsum_dragonborn 1
 
 execute if entity @s[team=dwarf] run function dnd:classes/dwarf/applyclassattributes
 execute if entity @s[team=elf] run function dnd:classes/elf/applyclassattributes
