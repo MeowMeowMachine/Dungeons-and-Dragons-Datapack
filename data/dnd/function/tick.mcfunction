@@ -40,7 +40,16 @@ execute as @a[team=!undecided] run scoreboard players reset @s changeracedragonb
 
 
 ## Dwarf
-execute as @a[team=dwarf,scores={toggleability=1}] run function dnd:classes/dwarf/effect
+execute as @a[team=dwarf,scores={toggleability=0}] at @s run function dnd:classes/dwarf/effect
+execute as @a[team=dwarf] at @s run function dnd:classes/dwarf/passive
+
+## Dragonborn
+execute as @a[team=dragonborn] at @s run function dnd:classes/dragonborn/passive
+execute as @a[team=dragonborn,scores={toggleability=0}] at @s run function dnd:classes/dragonborn/effect
+
+## Elf
+# execute as @a[team=elf] at @s run function dnd:classes/elf/passive
+execute as @a[team=elf,scores={toggleability=0}] at @s run function dnd:classes/elf/effect
 
 
 

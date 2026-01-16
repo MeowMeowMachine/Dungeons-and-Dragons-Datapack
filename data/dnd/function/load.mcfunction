@@ -53,6 +53,7 @@ scoreboard objectives add cooldown dummy
 scoreboard objectives add toggleabilitycd trigger
 scoreboard objectives add toggleability trigger
 scoreboard objectives add snek dummy
+scoreboard objectives add spotted dummy
 scoreboard objectives add ileftclicked dummy
 
 scoreboard objectives add height dummy
