@@ -4,7 +4,7 @@ execute as @a if entity @s[team=undecided] run function dnd:first_joined
 execute as @a[nbt={SelectedItem:{components:{"minecraft:written_book_content":{author:"God"}}}}] run function dnd:lib/enableclasschange
 execute as @a[team=undecided] at @s run kill @e[type=item,distance=..3]
 
-execute as @a[scores={sneak=1..}] run function dnd:lib/is_sneaking
+execute as @a[scores={sneak=1..},nbt={SelectedItem:{}}] run function dnd:lib/is_sneaking
 
 function dnd:lib/bossbars
 
@@ -45,8 +45,9 @@ execute if score tick cooldown matches 1 if score servertime start matches 1.. r
 execute as @a[nbt={SelectedItem:{id:"minecraft:mace"}}] run tellraw @s [{"text":"The Mace has been removed from Season 1 for balancing reasons.","color":"red"}]
 execute as @a[nbt={SelectedItem:{id:"minecraft:mace"}}] run clear @s mace
 
-execute as @a if dimension the_nether in minecraft:overworld run tp @s -1380 84 -319
-
+#execute in the_nether as @a[distance=..10000] in minecraft:overworld run tp @s -1380 84 -319
+execute in the_end positioned 0 0 0 as @a[distance=900..] in minecraft:overworld run tp @s -1380 84 -319
+execute in the_end positioned 0 0 0 as @a[distance=1..] in minecraft:overworld run tp @s -1380 84 -319
 
 ##death
 execute as @a[scores={victim=1..}] run function dnd:customdeathmsg
