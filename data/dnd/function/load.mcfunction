@@ -90,3 +90,10 @@ execute as @a unless score @s toggleabilitycd matches -1.. run scoreboard player
 scoreboard objectives add killer playerKillCount
 scoreboard objectives add deathmsgid dummy
 scoreboard objectives add victim deathCount
+scoreboard objectives add blxtrvld minecraft.custom:walk_one_cm
+scoreboard objectives add blockstravel dummy
+
+scoreboard objectives add togglesidebar trigger
+scoreboard objectives add dmgdealt minecraft.custom:damage_dealt
+scoreboard objectives add dmgreceived minecraft.custom:damage_taken
+scoreboard objectives add health health

@@ -129,3 +129,19 @@ execute if score master automate_raceupdates matches 1 as @a[team=elf] run funct
 execute if score master automate_raceupdates matches 1 as @a[team=halforc] run function dnd:classes/halforc/applyclassattributes
 execute if score master automate_raceupdates matches 1 as @a[team=halfling] run function dnd:classes/halfling/applyclassattributes
 execute if score master automate_raceupdates matches 1 as @a[team=dragonborn] run function dnd:classes/dragonborn/applyclassattributes
+
+
+execute as @a[scores={blxtrvld=100..}] run scoreboard players add @s blockstravel 1
+execute as @a[scores={blxtrvld=100..}] run scoreboard players remove @s blxtrvld 100
+
+execute as @a[scores={togglesidebar=2..}] run scoreboard players set @s togglesidebar 0
+execute as @a unless score @s togglesidebar matches -1.. run scoreboard players set @s togglesidebar 1
+
+execute as @a[scores={togglesidebar=1}] run tellraw @s [{"text":"You have travelled ","color":"aqua"},{"score":{"name":"@s","objective":"blockstravel"},"color":"blue"},{"text":" blocks in total.","color":"aqua"}]
+execute as @a[scores={togglesidebar=1}] run scoreboard players set @s togglesidebar 0
+scoreboard players enable @a togglesidebar
+
+execute as @a[team=demon,scores={dmgdealt=1..,cooldown=0}] at @s run function dnd:classes/demon/lifesteal
+scoreboard players set @a dmgdealt 0
+scoreboard players set @a dmgreceived 0
+
