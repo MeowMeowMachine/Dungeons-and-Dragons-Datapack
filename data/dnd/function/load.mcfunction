@@ -97,3 +97,7 @@ scoreboard objectives add togglesidebar trigger
 scoreboard objectives add dmgdealt minecraft.custom:damage_dealt
 scoreboard objectives add dmgreceived minecraft.custom:damage_taken
 scoreboard objectives add health health
+
+scoreboard objectives add stone_status dummy
+scoreboard objectives add nostopwatch dummy
+scoreboard objectives add stopwatchdummy dummy

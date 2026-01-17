@@ -1,0 +1,19 @@
+{
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "mainhand": {
+        "items": [
+          "minecraft:copper_ingot",
+          "minecraft:gold_ingot",
+          "minecraft:netherite_scrap",
+          "minecraft:iron_ingot",
+          "minecraft:diamond",
+          "minecraft:emerald",
+          "minecraft:quartz"
+        ]
+      }
+    }
+  }
+}

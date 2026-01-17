@@ -22,11 +22,17 @@ execute as @a[team=elf] if score @s[scores={cooldown=0}] snek matches 1.. if sco
 execute as @a[team=elf] unless entity @s[predicate=dnd:is_sneaking] run scoreboard players set @s snek 0
 execute as @a[team=elf] unless entity @s[predicate=dnd:is_sneaking] run scoreboard players set @s ileftclicked 0
 
+
+
+
+
+
+
 # cooldown
 scoreboard players add tick cooldown 1
 execute if score tick cooldown matches 20.. as @a if score @s cooldown matches 1.. run scoreboard players remove @s cooldown 1
 execute if score tick cooldown matches 20.. as @a if score @s enraged_status matches 1.. run scoreboard players remove @s enraged_status 1
-
+execute if score tick cooldown matches 20.. as @a if score @s stone_status matches 1.. run scoreboard players remove @s stone_status 1
 execute as @a unless score @s cooldown matches -1.. run scoreboard players set @s cooldown 0
 execute as @a unless score @s enraged_status matches -1.. run scoreboard players set @s enraged_status 0
 
@@ -62,16 +68,18 @@ execute as @a[team=!undecided] run scoreboard players reset @s changeracehalflin
 execute as @a[team=!undecided] run scoreboard players reset @s changeracedragonborn 
 
 ##dragbornability
-execute as @e[type=interaction,tag=enrage] at @s unless entity @e[type=player,distance=..1.5,team=dragonborn,predicate=dnd:is_sneaking,predicate=dnd:is_sword,scores={toggleability=0}] run kill @s
+execute as @e[type=interaction,tag=enrage] at @s unless entity @e[type=player,distance=..1,team=dragonborn,predicate=dnd:is_sneaking,predicate=dnd:is_sword,scores={toggleability=0}] run kill @s
 execute as @a[team=dragonborn,predicate=dnd:is_sneaking,scores={toggleability=0,cooldown=0},predicate=dnd:is_sword] at @s run function dnd:classes/dragonborn/enragetrigger
-execute as @a[team=dragonborn] at @s if score @s enraged_status matches 1.. run execute as @s run function dnd:lib/createbossbar with storage dnd:dynamicbossbardistributor distributor
 execute as @a[team=dragonborn,scores={enraged_status=29}] at @s run playsound minecraft:item.firecharge.use master @a ~ ~ ~ 1 0.8
 execute as @a[team=dragonborn,scores={enraged_status=29}] at @s run playsound entity.blaze.ambient master @a ~ ~ ~ 1 0.8
 execute as @a[team=dragonborn,scores={enraged_status=2}] at @s run playsound block.fire.extinguish master @a ~ ~ ~ 1 1.2
 # execute as @a store result storage 
 
 
-
+## dwarfability
+execute as @e[type=interaction,tag=stonestance] at @s unless entity @e[type=player,distance=..1,team=dwarf,predicate=dnd:is_sneaking,predicate=dnd:is_axe,scores={toggleability=0}] run kill @s
+execute as @a[team=dwarf,predicate=dnd:is_sneaking,scores={toggleability=0,cooldown=0},predicate=dnd:is_axe] at @s run function dnd:classes/dwarf/stonestancetrigger
+execute as @a[team=dwarf,scores={stone_status=1..}] at @s run function dnd:classes/dwarf/stonestance
 
 ## Dwarf
 execute as @a[team=dwarf,scores={toggleability=0}] at @s run function dnd:classes/dwarf/effect
@@ -95,8 +103,11 @@ scoreboard players enable @a[gamemode=creative] childrensafety
 
 
 execute as @a if score @s toggleability matches 1 run kill @e[type=interaction,tag=elditrich_blast,distance=2]
-execute as @a if score @s toggleabilitycd matches 1 unless score @s enraged_status matches 1.. unless score @s toggleability matches 1 run title @s actionbar [{"text":" [","color":"dark_gray"},{"text":"CD: ","color":"gray"},{"score":{"name":"@s","objective":"cooldown"},"color":"aqua"},{"text":"s","color":"blue"},{"text":"]","color":"dark_gray"}]
-execute as @a if score @s toggleabilitycd matches 1 unless score @s enraged_status matches 1.. if score @s toggleability matches 1 run title @s actionbar [{"text":" [","color":"dark_gray"},{"text":"CD: ","color":"gray"},{"score":{"name":"@s","objective":"cooldown"},"color":"red"},{"text":"s","color":"dark_red"},{"text":"]","color":"dark_gray"},{"text":" (DISABLED)","color":"red"}]
+## DEFAULT
+execute as @a if score @s toggleabilitycd matches 1 unless score @s enraged_status matches 1.. unless score @s stone_status matches 1.. unless score @s toggleability matches 1 run title @s actionbar [{"text":" [","color":"dark_gray"},{"text":"CD: ","color":"gray"},{"score":{"name":"@s","objective":"cooldown"},"color":"aqua"},{"text":"s","color":"blue"},{"text":"]","color":"dark_gray"}]
+execute as @a if score @s toggleabilitycd matches 1 unless score @s enraged_status matches 1.. unless score @s stone_status matches 1.. if score @s toggleability matches 1 run title @s actionbar [{"text":" [","color":"dark_gray"},{"text":"CD: ","color":"gray"},{"score":{"name":"@s","objective":"cooldown"},"color":"red"},{"text":"s","color":"dark_red"},{"text":"]","color":"dark_gray"},{"text":" (DISABLED)","color":"red"}]
+
+
 
 execute as @a if score @s enraged_status matches 1.. at @s run function dnd:classes/dragonborn/temparmor
 
@@ -112,8 +123,6 @@ execute as @a unless score @s toggleability matches -1.. run scoreboard players 
 
 
 
-execute store result storage dnd:dynamicbossbardistributor distributor.id int 1 run scoreboard players get distributor dynamicbossbardistributor
-
 
 
 execute if score master automate_raceupdates matches 1 as @a[team=demon] run function dnd:classes/demon/applyclassattributes
@@ -124,6 +133,7 @@ execute if score master automate_raceupdates matches 1 as @a[team=halforc] run f
 execute if score master automate_raceupdates matches 1 as @a[team=halfling] run function dnd:classes/halfling/applyclassattributes
 execute if score master automate_raceupdates matches 1 as @a[team=dragonborn] run function dnd:classes/dragonborn/applyclassattributes
 
+execute as @e[type=interaction,tag=mineral] at @s unless entity @e[type=player,distance=..1,team=dwarf,predicate=dnd:is_sneaking,scores={cooldown=0}] run kill @s
 
 execute as @a[scores={blxtrvld=100..}] run scoreboard players add @s blockstravel 1
 execute as @a[scores={blxtrvld=100..}] run scoreboard players remove @s blxtrvld 100

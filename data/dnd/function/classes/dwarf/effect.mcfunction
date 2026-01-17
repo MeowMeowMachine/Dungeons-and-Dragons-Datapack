@@ -16,3 +16,7 @@ execute if entity @s[predicate=dnd:is_sneaking,nbt={SelectedItem:{id:"minecraft:
 execute if entity @s[predicate=dnd:is_sneaking,nbt={SelectedItem:{id:"minecraft:ancient_debris"}}] run give @s minecraft:netherite_scrap 1
 execute if entity @s[predicate=dnd:is_sneaking,nbt={SelectedItem:{id:"minecraft:ancient_debris"}}] run clear @s ancient_debris 1
 execute if entity @s[predicate=dnd:is_sneaking,nbt={SelectedItem:{id:"minecraft:ancient_debris"}}] run playsound minecraft:entity.blaze.shoot master @a ~ ~ ~ 0.5 1.2
+execute if entity @s[predicate=dnd:is_sneaking,nbt={SelectedItem:{id:"minecraft:cobblestone"}}] run give @s minecraft:stone 1
+execute if entity @s[predicate=dnd:is_sneaking,nbt={SelectedItem:{id:"minecraft:cobblestone"}}] run clear @s cobblestone 1
+
+execute if entity @s[predicate=dnd:is_sneaking] run function dnd:classes/dwarf/yumminerals
