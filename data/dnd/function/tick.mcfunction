@@ -34,13 +34,7 @@ execute if score tick cooldown matches 20.. if score serverboom start matches 1.
 execute if score servertime start matches 0 run scoreboard players set serverboom start 0
 execute if score servertime start matches 0 run function dnd:debug/stop
 
-execute if score tick cooldown matches 1 if score servertime start matches 60 run tellraw @a [{"text":"Server stopping in 60 seconds...","color":"red"}]
-execute if score tick cooldown matches 1 if score servertime start matches 30 run tellraw @a [{"text":"Server stopping in 30 seconds...","color":"red"}]
-execute if score tick cooldown matches 1 if score servertime start matches 10 run tellraw @a [{"text":"Server stopping in 10 seconds...","color":"red"}]
-execute if score tick cooldown matches 1 if score servertime start matches 5 run tellraw @a [{"text":"Server stopping in 5 seconds...","color":"red"}]
-execute if score tick cooldown matches 1 if score servertime start matches 3 run tellraw @a [{"text":"Server stopping in 3 seconds...","color":"red"}]
-execute if score tick cooldown matches 1 if score servertime start matches 2 run tellraw @a [{"text":"Server stopping in 2 seconds...","color":"red"}]
-execute if score tick cooldown matches 1 if score servertime start matches 1 run tellraw @a [{"text":"Server stopping in 1 second...","color":"red"}]
+execute if score tick cooldown matches 1 if score servertime start matches 1.. run function dnd:debug/stopmsg
 ### season 1 specific
 execute as @a[nbt={SelectedItem:{id:"minecraft:mace"}}] run tellraw @s [{"text":"The Mace has been removed from Season 1 for balancing reasons.","color":"red"}]
 execute as @a[nbt={SelectedItem:{id:"minecraft:mace"}}] run clear @s mace
