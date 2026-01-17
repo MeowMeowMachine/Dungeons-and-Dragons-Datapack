@@ -142,6 +142,6 @@ execute as @a[scores={togglesidebar=1}] run scoreboard players set @s toggleside
 scoreboard players enable @a togglesidebar
 
 execute as @a[team=demon,scores={dmgdealt=1..,cooldown=0}] at @s run function dnd:classes/demon/lifesteal
+
 scoreboard players set @a dmgdealt 0
 scoreboard players set @a dmgreceived 0
-
