@@ -3,7 +3,8 @@
 #
 execute if score @s snek matches 1 at @s run playsound minecraft:block.dispenser.fail master @a ~ ~ ~ 1 1
 execute if score @s snek matches 1.. run effect give @s slowness 1 1 true
-
+execute if score @s snek matches 1.. run effect give @s levitation 1 1 true
+execute if score @s snek matches 1 at @s run playsound block.enchantment_table.use master @a ~ ~ ~ 1 0.8
 execute if score @s snek matches 10 at @s run playsound minecraft:block.dispenser.fail master @a ~ ~ ~ 1 1.3
 execute if score @s snek matches 10.. run effect give @s slowness 1 2 true
 execute if score @s snek matches 20 at @s run playsound minecraft:block.dispenser.fail master @a ~ ~ ~ 1 1.6
@@ -16,4 +17,5 @@ execute if score @s snek matches 50.. at @s run playsound minecraft:block.dispen
 execute if score @s snek matches 50 at @s run function dnd:classes/elf/elditrich_blast
 execute if score @s snek matches 25 at @s run playsound minecraft:entity.warden.sonic_charge master @a ~ ~ ~ 1 1.1
 execute if score @s snek matches 50 run function dnd:classes/elf/elditrich_blast
+execute if score @s snek matches 50 run effect give @s slow_falling 2 0 true
 execute if score @s snek matches 50.. run scoreboard players set @s snek 0

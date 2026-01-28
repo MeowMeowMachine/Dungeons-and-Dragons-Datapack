@@ -4,7 +4,7 @@ execute as @a if entity @s[team=undecided] run function dnd:first_joined
 execute as @a[nbt={SelectedItem:{components:{"minecraft:written_book_content":{author:"God"}}}}] run function dnd:lib/enableclasschange
 execute as @a[team=undecided] at @s run kill @e[type=item,distance=..3]
 
-execute as @a[scores={sneak=1..},nbt={SelectedItem:{}}] run function dnd:lib/is_sneaking
+execute as @a[scores={sneak=1..}] run function dnd:lib/is_sneaking
 
 function dnd:lib/bossbars
 
@@ -22,12 +22,18 @@ execute as @a[team=elf] if score @s[scores={cooldown=0}] snek matches 1.. if sco
 execute as @a[team=elf] unless entity @s[predicate=dnd:is_sneaking] run scoreboard players set @s snek 0
 execute as @a[team=elf] unless entity @s[predicate=dnd:is_sneaking] run scoreboard players set @s ileftclicked 0
 
+execute in minecraft:the_nether positioned 0 0 0 as @a[distance=1..] if entity @s[team=demon] run function dnd:lib/hell
+execute in minecraft:the_nether positioned 0 0 0 as @a[distance=1..] if entity @s[team=dragonborn] run function dnd:lib/hell
 
+execute in the_nether positioned 0 0 0 as @a[distance=1..] unless score @s iamnether matches 2 if entity @s[team=demon] run scoreboard players add @s iamnether 1
+execute in the_nether positioned 0 0 0 as @a[distance=1..] unless score @s iamnether matches 2 if entity @s[team=dragonborn] run scoreboard players add @s iamnether 1
+execute in minecraft:overworld as @a[scores={iamnether=2,},distance=1..] run tellraw @s [{"text":"You have left your home plane of existence. You feel weaker.","color":"red"}]
+execute in minecraft:overworld as @a[scores={iamnether=2,},distance=1..] at @s run playsound minecraft:entity.wither.hurt master @s ~ ~ ~ 1 0.5
+execute in minecraft:overworld as @a[scores={iamnether=2,},distance=1..] run scoreboard players set @s iamnether 0
 
-
-
-
-
+execute in the_nether as @a[scores={iamnether=1,},distance=1..] at @s run playsound minecraft:entity.wither.ambient master @s ~ ~ ~ 1 0.5
+execute in the_nether as @a[scores={iamnether=1,},distance=1..] run tellraw @s [{"text":"You have returned to your home plane of existence. You feel stronger.","color":"green"}]
+execute as @a if entity @s[predicate=dnd:netherroof] in minecraft:overworld run tp @s -1380 84 -319
 # cooldown
 scoreboard players add tick cooldown 1
 execute if score tick cooldown matches 20.. as @a if score @s cooldown matches 1.. run scoreboard players remove @s cooldown 1
@@ -35,6 +41,15 @@ execute if score tick cooldown matches 20.. as @a if score @s enraged_status mat
 execute if score tick cooldown matches 20.. as @a if score @s stone_status matches 1.. run scoreboard players remove @s stone_status 1
 execute as @a unless score @s cooldown matches -1.. run scoreboard players set @s cooldown 0
 execute as @a unless score @s enraged_status matches -1.. run scoreboard players set @s enraged_status 0
+
+execute as @a if score @s broknetherite matches 1.. run tellraw @s [{"text":"[WARNING]","color":"dark_red"},{"text":" If you make netherite armor, it will be","color":"red"},{"text":" CLEARED","color":"dark_red","bold":true}]
+execute as @a if score @s broknetherite matches 1.. at @s run playsound entity.wither.spawn master @s ~ ~ ~ 1 1.4
+scoreboard players set @a broknetherite 0
+
+clear @a netherite_helmet
+clear @a netherite_chestplate
+clear @a netherite_leggings
+clear @a netherite_boots
 
 execute if score tick cooldown matches 20.. if score serverboom start matches 1.. run scoreboard players remove servertime start 1
 execute if score servertime start matches 0 run scoreboard players set serverboom start 0
@@ -97,7 +112,7 @@ execute as @a[team=elf,scores={toggleability=0}] at @s run function dnd:classes/
 
 # safe
 execute if score master childrensafety matches 1 run function dnd:lib/childrensafety
-execute if score master childrensafety matches 1.. run scoreboard players set master childrensafety 0
+execute if score master childrensafety matches 2.. run scoreboard players set master childrensafety 0
 execute unless score master childrensafety matches 1 run function dnd:lib/childrenunsafety
 
 scoreboard players enable @a[gamemode=creative] childrensafety
@@ -150,3 +165,56 @@ execute as @a[team=demon,scores={dmgdealt=1..,cooldown=0}] at @s run function dn
 
 scoreboard players set @a dmgdealt 0
 scoreboard players set @a dmgreceived 0
+
+
+
+execute if score master zawarudo matches 1 run scoreboard players add timer zawarudo 1
+
+# made in heaven world wipe
+execute if score timer zawarudo matches 2 run time set day
+execute if score timer zawarudo matches 10 run time set noon
+execute if score timer zawarudo matches 12..20 run time add 2400
+execute if score timer zawarudo matches 20 run title @a title [{"text":"MADE IN HEAVEN","color":"gold","bold":true}]
+execute if score timer zawarudo matches 2 at @a run playsound entity.ender_dragon.death master @a ~ ~ ~ 1 0.5
+execute if score timer zawarudo matches 21 run time set day
+execute if score timer zawarudo matches 25 run time set noon
+execute if score timer zawarudo matches 30 at @a run playsound entity.wither.ambient master @a ~ ~ ~ 1 0.5
+execute if score timer zawarudo matches 30.. as @a run effect give @s levitation 2 2 true
+execute if score timer zawarudo matches 40 run time add 2400
+execute if score timer zawarudo matches 50 run time set day
+execute if score timer zawarudo matches 60 run time set noon
+execute if score timer zawarudo matches 60 run title @a title [{"text":"MADE IN HEAVEN","color":"gold","bold":true}]
+execute if score timer zawarudo matches 65 at @a run playsound entity.ender_dragon.death master @a ~ ~ ~ 1 0.5
+execute if score timer zawarudo matches 70 run time set day
+execute if score timer zawarudo matches 75 run time set noon
+execute if score timer zawarudo matches 80 run time set midnight
+execute if score timer zawarudo matches 85 run time set day
+execute if score timer zawarudo matches 90 run time set noon
+execute if score timer zawarudo matches 95 run time set midnight
+execute if score timer zawarudo matches 100 run time set day
+execute if score timer zawarudo matches 105 run time set noon
+execute if score timer zawarudo matches 105 at @a run title @a title [{"text":"THE UNIVERSE","color":"dark_red","bold":true}]
+execute if score timer zawarudo matches 105 at @a run playsound entity.ender_dragon.death master @a ~ ~ ~ 1 0.5
+execute if score timer zawarudo matches 110 run time set midnight
+execute if score timer zawarudo matches 115 run time set day
+execute if score timer zawarudo matches 120 run time set noon
+execute if score timer zawarudo matches 125 run time set midnight
+execute if score timer zawarudo matches 130 run time set day
+execute if score timer zawarudo matches 135 run time set noon
+execute if score timer zawarudo matches 140 run time set midnight
+execute if score timer zawarudo matches 145 run time set day
+execute if score timer zawarudo matches 150 run time set noon
+execute if score timer zawarudo matches 155 run time set midnight
+execute if score timer zawarudo matches 160 run time set day
+execute if score timer zawarudo matches 165 run time set noon
+execute if score timer zawarudo matches 170 run time set midnight
+execute if score timer zawarudo matches 170 at @a run playsound entity.ender_dragon.death master @a ~ ~ ~ 1 0.2
+execute if score timer zawarudo matches 175 run time set day
+execute if score timer zawarudo matches 180 run time set noon
+execute if score timer zawarudo matches 185 run time set midnight
+execute if score timer zawarudo matches 190 run time set day
+execute if score timer zawarudo matches 195 run time set noon
+execute if score timer zawarudo matches 200 run time set midnight
+execute if score timer zawarudo matches 205 run scoreboard players set timer zawarudo 0
+
+execute if score timer zawarudo matches 204 run tellraw @a[gamemode=creative] "go"

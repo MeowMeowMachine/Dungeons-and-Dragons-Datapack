@@ -1,10 +1,10 @@
-attribute @s minecraft:max_health base set 30
-attribute @s minecraft:attack_damage base set 3
-attribute @s minecraft:armor base set 4
+attribute @s minecraft:max_health base set 60
+attribute @s minecraft:attack_damage base set 4
+attribute @s minecraft:armor base set 6
 attribute @s minecraft:knockback_resistance base set 0.1
 attribute @s minecraft:movement_speed base set 0.12
 attribute @s step_height base set 1
-attribute @s minecraft:attack_speed base set 3.7
+attribute @s minecraft:attack_speed base set 3.6
 
 attribute @s entity_interaction_range base set 5.5
 attribute @s block_interaction_range base set 7

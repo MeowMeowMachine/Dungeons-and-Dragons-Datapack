@@ -1,5 +1,5 @@
 attribute @s minecraft:max_health base set 28
-attribute @s minecraft:attack_damage base set 1.2
+attribute @s minecraft:attack_damage base set 2
 attribute @s minecraft:armor base set 5
 attribute @s minecraft:knockback_resistance base set 0.15
 attribute @s minecraft:movement_speed base set 0.12
@@ -19,3 +19,4 @@ execute unless score @s IALREADYHAVEMYHEIGHT matches 1 run execute as @s store r
 
 execute unless score @s IALREADYHAVEMYHEIGHT matches 1 run function dnd:lib/changeheight with storage dnd:temp_height scale
 scoreboard players set @s IALREADYHAVEMYHEIGHT 1
+

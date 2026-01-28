@@ -1,5 +1,5 @@
-attribute @s minecraft:max_health base set 26
-attribute @s minecraft:attack_damage base set 4
+attribute @s minecraft:max_health base set 24
+attribute @s minecraft:attack_damage base set 2.5
 attribute @s minecraft:armor base set 4
 attribute @s minecraft:knockback_resistance base set 0.1
 attribute @s minecraft:movement_speed base set 0.15

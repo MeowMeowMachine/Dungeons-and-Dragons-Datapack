@@ -81,6 +81,8 @@ scoreboard objectives add enraged_status dummy
 
 scoreboard objectives add dynamicbossbardistributor dummy
 scoreboard objectives add ihavabarwtf dummy
+scoreboard objectives add broknetherite minecraft.mined:minecraft.ancient_debris
+scoreboard objectives add iamnether dummy
 scoreboard objectives add automate_raceupdates dummy
 scoreboard objectives add IALREADYHAVEMYHEIGHT dummy
 execute unless score master automate_raceupdates matches -1.. run scoreboard players set master automate_raceupdates 1
@@ -101,3 +103,5 @@ scoreboard objectives add health health
 scoreboard objectives add stone_status dummy
 scoreboard objectives add nostopwatch dummy
 scoreboard objectives add stopwatchdummy dummy
+
+scoreboard objectives add zawarudo dummy
